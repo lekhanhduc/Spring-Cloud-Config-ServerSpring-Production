@@ -1,3 +1,6 @@
+spring:
+    boot:
+      message: Hello, Identity Service, Spring Cloud Bus (Test Environment)
 # Eureka
 eureka:
   instance:
