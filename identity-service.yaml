@@ -30,7 +30,6 @@ resilience4j:
         limitForPeriod: 500  # Giảm xuống 500 request/giây trong môi trường test
         limitRefreshPeriod: 1s
         timeoutDuration: 500ms
----
 spring:
   boot:
     message: Hello, Identity Service, Spring Cloud Bus (Test Environment)
