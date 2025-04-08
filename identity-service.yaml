@@ -1,0 +1,38 @@
+# Eureka
+eureka:
+  instance:
+    prefer-ip-address: true  # Bắt Eureka sử dụng IP thay vì hostname
+    metadata-map:
+      weight: 50
+  client:
+    service-url:
+      defaultZone: http://registry-service:8761/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+
+# Circuit Breaker
+resilience4j:
+  circuitbreaker:
+    instances:
+      identityService:
+        failureRateThreshold: 50
+        slowCallRateThreshold: 50
+        slowCallDurationThreshold: 4000ms
+        permittedNumberOfCallsInHalfOpenState: 3
+        slidingWindowSize: 10
+        waitDurationInOpenState: 5000ms
+  retry:
+    instances:
+      identityService:
+        maxAttempts: 3
+        waitDuration: 1000ms
+  ratelimiter:
+    instances:
+      identityService:
+        limitForPeriod: 500  # Giảm xuống 500 request/giây trong môi trường test
+        limitRefreshPeriod: 1s
+        timeoutDuration: 500ms
+
+spring:
+  boot:
+    message: Hello, Identity Service, Spring Cloud Bus (Test Environment)
