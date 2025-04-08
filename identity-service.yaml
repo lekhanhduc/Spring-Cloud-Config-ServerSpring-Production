@@ -1,3 +1,6 @@
+spring:
+  boot:
+    message: Hello, Identity Service, Spring Cloud Bus (Test Environment)
 # Eureka
 eureka:
   instance:
@@ -30,7 +33,3 @@ resilience4j:
         limitForPeriod: 500
         limitRefreshPeriod: 1s
         timeoutDuration: 500ms
----
-spring:
-  boot:
-    message: Hello, Identity Service, Spring Cloud Bus (Test Environment)
