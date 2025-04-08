@@ -1,0 +1,37 @@
+spring:
+  # rabbitmq:
+  #   host: rabbitmq  # Thay localhost bằng tên container rabbitmq
+  #   port: 5672
+  #   username: guest
+  #   password: guest
+  # cloud:
+  #   bus:
+  #     enabled: true  # Kích hoạt Spring Cloud Bus
+  #     trace:
+  #       enabled: true  # Bật tracing cho Spring Cloud Bus
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  # tracing:
+  #   sampling:
+  #     probability: 1.0  # Giảm tỷ lệ sampling trong prod
+  # zipkin:
+  #   tracing:
+  #     endpoint: http://zipkin:9411/api/v2/spans  # Thay localhost bằng tên container zipkin
+
+eureka:
+  instance:
+    prefer-ip-address: true 
+  client:
+    service-url:
+      defaultZone: http://registry-service:8761/eureka/
+    fetch-registry: true
+    register-with-eureka: true
+---
+spring:
+  profiles: prod
+  boot:
+    message: Hello Profile Service, Spring Cloud Bus (Production Environment)
